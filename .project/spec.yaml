@@ -120,7 +120,9 @@ execution:
     gpu:
       requested: 1
     sharedMemoryMB: 1024
-  secrets: []
+  secrets:
+  - variable: HUGGING_FACE_HUB_TOKEN
+    description: Hugging Face API Key
   mounts:
   - type: project
     target: /project/
@@ -130,3 +132,7 @@ execution:
     target: /data/tensorboard/logs/
     description: Tensorboard Log Files
     options: volumeName=tensorboard-logs-volume
+  - type: host
+    target: /project/models/
+    description: Where to save the fine-tuned model on the HOST system
+    options: ""
